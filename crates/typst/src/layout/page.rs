@@ -396,8 +396,8 @@ pub struct PagebreakElem {
     #[default(false)]
     pub weak: bool,
 
-    /// If given, ensures that the next page will be an even/odd page, with an
-    /// empty page in between if necessary.
+    /// If given, ensures that the next page will be an even/odd/first/second/
+    /// third/fourth page, with as many empty pages in between as necessary.
     ///
     /// ```example
     /// #set page(height: 30pt)
@@ -690,13 +690,21 @@ impl PageRanges {
     }
 }
 
-/// Whether something should be even or odd.
+/// Whether something should be even or odd, first, second, third, or fourth out of four.
 #[derive(Debug, Copy, Clone, Eq, PartialEq, Hash, Cast)]
 pub enum Parity {
     /// Next page will be an even page.
     Even,
     /// Next page will be an odd page.
     Odd,
+    /// Next page will be the first page in a group of four.
+    First,
+    /// Next page will be the second page in a group of four.
+    Second,
+    /// Next page will be the third page in a group of four.
+    Third,
+    /// Next page will be the fourth page in a group of four.
+    Fourth,
 }
 
 impl Parity {
@@ -705,6 +713,10 @@ impl Parity {
         match self {
             Self::Even => number % 2 == 0,
             Self::Odd => number % 2 == 1,
+            Self::First => number % 4 == 0,
+            Self::Second => number % 4 == 1,
+            Self::Third => number % 4 == 2,
+            Self::Fourth => number % 4 == 3,
         }
     }
 }

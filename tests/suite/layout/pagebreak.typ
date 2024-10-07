@@ -87,12 +87,14 @@ First
 Third
 #pagebreak(to: "even")
 Fourth
-#pagebreak(to: "even")
-Sixth
-#pagebreak()
+#pagebreak(to: "third")
 Seventh
-#pagebreak(to: "odd")
-#page[Ninth]
+#pagebreak()
+Eighth
+#pagebreak(to: "even")
+Tenth
+#pagebreak(to: "fourth")
+#page[Twelfth]
 
 --- pagebreak-to-auto-sized ---
 #set page(width: auto, height: auto)

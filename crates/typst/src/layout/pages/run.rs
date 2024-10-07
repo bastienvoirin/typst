@@ -35,7 +35,7 @@ pub struct LayoutedPage {
     pub numbering: Option<Numbering>,
 }
 
-/// Layout a single page suitable  for parity adjustment.
+/// Layout a single page suitable for parity adjustment.
 pub fn layout_blank_page(
     engine: &mut Engine,
     locator: Locator,
